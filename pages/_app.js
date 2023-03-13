@@ -4,10 +4,16 @@ import Layout from '../layout/layout';
 import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 import 'primeicons/primeicons.css';
-import '../styles/layout/layout.scss';
-import '../styles/demo/Demos.scss';
+import '../styles/admin/layout/layout.scss';
+import '../styles/admin/demo/Demos.scss';
+import { useRouter } from 'next/router';
 
 export default function MyApp({ Component, pageProps }) {
+
+    const { asPath, pathname } = useRouter();
+  console.log(asPath); // '/blog/xyz'
+  console.log(pathname);
+
     if (Component.getLayout) {
         return (
             <LayoutProvider>
