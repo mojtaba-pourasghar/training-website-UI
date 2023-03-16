@@ -5,8 +5,8 @@ import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
 import { Menu } from 'primereact/menu';
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { ProductService } from '../../demo/service/ProductService';
-import { LayoutContext } from '../../layout/context/layoutcontext';
+import { ProductService } from '../../components/admin/demo/service/ProductService';
+import { LayoutContext } from '../../components/admin/layout/context/layoutcontext';
 import Link from 'next/link';
 const lineData = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
