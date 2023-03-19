@@ -10,8 +10,10 @@ import AppTopbar from './AppTopbar';
 import AppConfig from './AppConfig';
 import { LayoutContext } from './context/layoutcontext';
 import PrimeReact from 'primereact/api';
+import { useSession } from "next-auth/react";
 
 const Layout = (props) => {
+    const { data: session, status } = useSession();
     const { layoutConfig, layoutState, setLayoutState } = useContext(LayoutContext);
     const topbarRef = useRef(null);
     const sidebarRef = useRef(null);
@@ -103,37 +105,46 @@ const Layout = (props) => {
         'p-ripple-disabled': !layoutConfig.ripple
     });
 
-    return (
-        <React.Fragment>
-            <Head>
-                <title>Sakai by PrimeReact | Free Admin Template for NextJS</title>
-                <meta charSet="UTF-8" />
-                <meta name="description" content="The ultimate collection of design-agnostic, flexible and accessible React UI Components." />
-                <meta name="robots" content="index, follow" />
-                <meta name="viewport" content="initial-scale=1, width=device-width" />
-                <meta property="og:type" content="website"></meta>
-                <meta property="og:title" content="Sakai by PrimeReact | Free Admin Template for NextJS"></meta>
-                <meta property="og:url" content="https://www.primefaces.org/sakai-react"></meta>
-                <meta property="og:description" content="The ultimate collection of design-agnostic, flexible and accessible React UI Components." />
-                <meta property="og:image" content="https://www.primefaces.org/static/social/sakai-nextjs.png"></meta>
-                <meta property="og:ttl" content="604800"></meta>
-                <link rel="icon" href={`${contextPath}/favicon.ico`} type="image/x-icon"></link>
-            </Head>
+    useEffect(() => {
+        if (status === "unauthenticated") router.push(`${process.env.ADMIN_ROUTE}/auth/login`);
+      }, [status]);
+    
+      if (status === "authenticated") {
 
-            <div className={containerClass}>
-                <AppTopbar ref={topbarRef} />
-                <div ref={sidebarRef} className="layout-sidebar">
-                    <AppSidebar />
-                </div>
-                <div className="layout-main-container">
-                    <div className="layout-main">{props.children}</div>
-                    <AppFooter />
-                </div>
-                <AppConfig />
-                <div className="layout-mask"></div>
-            </div>
-        </React.Fragment>
-    );
+            return (
+                <React.Fragment>
+                    <Head>
+                        <title>Sakai by PrimeReact | Free Admin Template for NextJS</title>
+                        <meta charSet="UTF-8" />
+                        <meta name="description" content="The ultimate collection of design-agnostic, flexible and accessible React UI Components." />
+                        <meta name="robots" content="index, follow" />
+                        <meta name="viewport" content="initial-scale=1, width=device-width" />
+                        <meta property="og:type" content="website"></meta>
+                        <meta property="og:title" content="Sakai by PrimeReact | Free Admin Template for NextJS"></meta>
+                        <meta property="og:url" content="https://www.primefaces.org/sakai-react"></meta>
+                        <meta property="og:description" content="The ultimate collection of design-agnostic, flexible and accessible React UI Components." />
+                        <meta property="og:image" content="https://www.primefaces.org/static/social/sakai-nextjs.png"></meta>
+                        <meta property="og:ttl" content="604800"></meta>
+                        <link rel="icon" href={`${contextPath}/favicon.ico`} type="image/x-icon"></link>
+                        <link id="theme-css" href={`${contextPath}/admin/themes/lara-light-indigo/theme.css`} rel="stylesheet"></link>
+                    </Head>
+
+                    <div className={containerClass}>
+                        <AppTopbar ref={topbarRef} />
+                        <div ref={sidebarRef} className="layout-sidebar">
+                            <AppSidebar />
+                        </div>
+                        <div className="layout-main-container">
+                            <div className="layout-main">{props.children}</div>
+                            <AppFooter />
+                        </div>
+                        <AppConfig />
+                        <div className="layout-mask"></div>
+                    </div>
+                </React.Fragment>
+            );
+      }
+      return <div>Loading ...</div>;
 };
 
 export default Layout;

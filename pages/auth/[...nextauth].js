@@ -11,7 +11,7 @@ export default NextAuth({
            type:'credentials',
            async authorize(credentials,req){
             try {
-                  const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/signin`, credentials);             
+                  const res = await axios.post(process.env.AUTH_SERVICE.SIGNIN, credentials);             
                   if (res.status === 200) {
                     // Return user object and JWT token
                     

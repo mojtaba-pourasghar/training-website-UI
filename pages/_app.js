@@ -8,8 +8,11 @@ import '../styles/admin/layout/layout.scss';
 import '../styles/admin/demo/Demos.scss';
 import { useRouter } from 'next/router';
 import UserLayout from '../components/user-layout';
+import AuthLayout from '../components/admin/layout/auth-layout';
+import { SessionProvider } from "next-auth/react";
+import { appWithTranslation } from 'next-i18next';
 
-export default function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
 
     const { asPath, pathname } = useRouter();
   //console.log(asPath); // '/blog/xyz'
@@ -18,18 +21,25 @@ export default function MyApp({ Component, pageProps }) {
   const pos = asPath.indexOf(process.env.ADMIN);
 
   if (pos !== -1) {
+ 
     if (Component.getLayout) {
+    
         return (
             <LayoutProvider>
-                {Component.getLayout(<Component {...pageProps} />)}
+                <AuthLayout>
+                    {Component.getLayout(<Component {...pageProps} />)}
+                </AuthLayout>
             </LayoutProvider>
         )
     } else {
+       
         return (
             <LayoutProvider>
-                <Layout>
-                    <Component {...pageProps} />
-                </Layout>
+                <SessionProvider session={pageProps.session}>
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </SessionProvider>
             </LayoutProvider>
         );
     }
@@ -38,6 +48,7 @@ export default function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
     </UserLayout>)
   }
-
-    
+   
 }
+
+export default appWithTranslation(MyApp)

@@ -1,4 +1,6 @@
 /** @type {import('next').NextConfig} */
+const { i18n } = require('./next-i18next.config')
+ 
 const nextConfig = {
     reactStrictMode: false,
     trailingSlash: true,
@@ -10,8 +12,16 @@ const nextConfig = {
     ,
   env: {
     ADMIN :"admin",
+    ADMIN_ROUTE :"/admin",
     NEXT_PUBLIC_API_URL: "http://localhost:7080",
+    API_PATH : "/api/",
+
+    AUTH_SERVICE:{
+      SIGNIN :`${process.env.NEXT_PUBLIC_API_URL}${process.env.API_PATH}auth/signin`
+    },
+    
   },
+  i18n
 };
 
 module.exports = nextConfig;
