@@ -11,14 +11,14 @@ export default NextAuth({
            type:'credentials',
            async authorize(credentials,req){
             try {
-                  const res = await axios.post(process.env.AUTH_SERVICE.SIGNIN, credentials);             
+                  const res = await axios.post('http://172.20.144.138:9080/api/auth/signin', credentials);           
                   if (res.status === 200) {
                     // Return user object and JWT token
                     
                     const user =  {
                       id: res.data.id,
                       name: res.data.username,
-                      email: "user@example.com",
+                      email: res.data.email,
                       roles: res.data.roles,
                       jwt: res.data.token,
                     };

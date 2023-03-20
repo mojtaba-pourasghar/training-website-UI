@@ -13,7 +13,7 @@ const nextConfig = {
   env: {
     ADMIN :"admin",
     ADMIN_ROUTE :"/admin",
-    NEXT_PUBLIC_API_URL: "http://localhost:7080",
+    NEXT_PUBLIC_API_URL: "http://172.20.144.138:9080/",
     API_PATH : "/api/",
 
     AUTH_SERVICE:{
