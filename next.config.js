@@ -13,9 +13,10 @@ const nextConfig = {
   env: {
     ADMIN :"admin",
     ADMIN_ROUTE :"/admin",
-    NEXT_PUBLIC_API_URL: "http://172.20.144.138:9080/",
+    NEXT_PUBLIC_API_URL: "http://172.20.144.138:2525/training-shop/",
+    NEXT_PUBLIC_ADMIN_API_URL: `${process.env.NEXT_PUBLIC_API_URL}/${process.env.ADMIN}`,
     API_PATH : "/api/",
-
+    MESSAGE_TIMEOUT :5000,
     AUTH_SERVICE:{
       SIGNIN :`${process.env.NEXT_PUBLIC_API_URL}${process.env.API_PATH}auth/signin`
     },

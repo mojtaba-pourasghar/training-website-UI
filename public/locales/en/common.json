@@ -1,4 +1,7 @@
 {
-    "fff" : "Weddddddddddddddddd  d d "
+    "success" : "success",
+    "error" : "error",
+    "summarySuccessful" : "Successful",
+    "summaryError" : "Error"
 }
   

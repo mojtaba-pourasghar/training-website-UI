@@ -5,7 +5,7 @@ import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
 import { Menu } from 'primereact/menu';
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { ProductService } from '../../components/admin/demo/service/ProductService';
+//import { ProductService } from '../../components/admin/demo/service/ProductService';
 import { LayoutContext } from '../../components/admin/layout/context/layoutcontext';
 import Link from 'next/link';
 const lineData = {
@@ -103,8 +103,8 @@ const Dashboard = () => {
     };
 
     useEffect(() => {
-        const productService = new ProductService();
-        productService.getProductsSmall().then((data) => setProducts(data));
+       // const productService = new ProductService();
+       // productService.getProductsSmall().then((data) => setProducts(data));
     }, []);
 
     useEffect(() => {

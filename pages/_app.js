@@ -12,6 +12,7 @@ import AuthLayout from '../components/admin/layout/auth-layout';
 import { SessionProvider } from "next-auth/react";
 import { appWithTranslation } from 'next-i18next';
 
+
 function MyApp({ Component, pageProps }) {
 
     const { asPath, pathname } = useRouter();

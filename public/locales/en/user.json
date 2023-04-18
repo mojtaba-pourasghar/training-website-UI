@@ -1,4 +1,19 @@
 {
-    "welcome" : "Welcome to Administrator Panel"
+    "welcome" : "Welcome to Administrator Panel",
+    "user_updated" : "User Updated",
+    "user_created" : "User Created",
+    "user_deleted" : "User Deleted",
+    "id" : "Id",
+    "name" : "Name",
+    "role" : "Role",
+    "roles" : "Roles",
+    "email" : "Email",
+    "mobile" : "Mobile",
+    "state" : "State",
+    "password":"Password",
+    "re-password":"Re-Password",
+    "name_required":"Name is required.",
+    "email_required":"Email is required.",
+    "mobile_required":"Mobile is required."
 }
   

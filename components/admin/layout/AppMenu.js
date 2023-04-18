@@ -28,6 +28,7 @@ const AppMenu = () => {
                         {
                             label: 'Users',
                             icon: 'pi pi-fw pi-user',
+                            to: `/${process.env.ADMIN}/users`
                         }
                     ]
                 } 
