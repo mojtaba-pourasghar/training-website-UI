@@ -1,0 +1,14 @@
+{
+    "role_updated" : "Role Updated",
+    "role_created" : "Role Created",
+    "role_deleted" : "Role Deleted",
+    "id" : "Id",
+    "name" : "Name",
+    "description" :"Description",
+    "permission" : "Permission",
+    "permissions" : "Permissions",
+    "state" : "State",
+    "name_required":"Name is required.",
+    "description_required":"Description is required."
+}
+  

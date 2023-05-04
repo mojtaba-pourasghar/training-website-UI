@@ -1,14 +1,14 @@
 import api from './api';
 
-class RoleService {
+class PermissionService {
     constructor() {
       this.adminRoute = process.env.NEXT_PUBLIC_API_URL+process.env.ADMIN;
-      this.adminRoleRoute = `${this.adminRoute}/v1/roles`
+      this.adminPermissionRoute = `${this.adminRoute}/v1/permissions`
     }
 
-    async getAdminRoles(token) {
+    async getAdminPermissions(token) {
         return await api
-            .get(this.adminRoleRoute, {
+            .get(this.adminPermissionRoute, {
               headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + token,
@@ -21,28 +21,11 @@ class RoleService {
               throw error;
             });
     }
-    
-    async getAdminRole(token,roleId) {
-   
-      return await api
-          .get(this.adminRoleRoute+'/'+roleId, {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + token,
-            },
-          })
-          .then((response) =>                               
-            response.data
-          )
-          .catch(error => {
-            throw error;
-          });
-  }
 
-    async saveAdminRole(token,formData) {
+    async saveAdminPermission(token,formData) {
 
       return await api
-          .post(this.adminRoleRoute,formData, {
+          .post(this.adminPermissionRoute,formData, {
             headers: {
               "Content-Type": "application/json",
               Authorization: "Bearer " + token,
@@ -57,10 +40,10 @@ class RoleService {
           });
   }
 
-  async updateAdminRole(token,formData) {
+  async updateAdminPermission(token,formData) {
 
     return await api
-        .put(this.adminRoleRoute,formData, {
+        .put(this.adminPermissionRoute,formData, {
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,
@@ -74,10 +57,10 @@ class RoleService {
         });
 }
 
-  async deleteAdminRole(token,roleId) {
+  async deleteAdminPermission(token,permissionId) {
    
     return await api
-        .delete(this.adminRoleRoute+'/'+roleId, {
+        .delete(this.adminPermissionRoute+'/'+permissionId, {
           headers: {
             "Content-Type": "application/json",
             Authorization: "Bearer " + token,
@@ -92,4 +75,4 @@ class RoleService {
 }
 }
 
-export default new RoleService;
+export default new PermissionService;

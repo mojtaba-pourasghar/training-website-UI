@@ -3,26 +3,18 @@ import { Button } from 'primereact/button';
 import { Column } from 'primereact/column';
 import { DataTable } from 'primereact/datatable';
 import { Dialog } from 'primereact/dialog';
-import { FileUpload } from 'primereact/fileupload';
-import { InputNumber } from 'primereact/inputnumber';
 import { InputText } from 'primereact/inputtext';
 import { Password } from 'primereact/password';
-import { InputTextarea } from 'primereact/inputtextarea';
-import { Checkbox } from 'primereact/checkbox';
 import { InputSwitch } from 'primereact/inputswitch';
 import { RadioButton } from 'primereact/radiobutton';
 import { Toast } from 'primereact/toast';
-
-
 import { classNames } from 'primereact/utils';
 import React, { useEffect, useRef, useState } from 'react';
 import  UserService  from '../../../services/UserService';
 import  RoleService  from '../../../services/RoleService';
 import ListLayout from '../../../components/admin/layout/list-layout';
-
 import { getSession, useSession } from "next-auth/react"; 
 import { useTranslation } from 'next-i18next';
-
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import UserField from '../../../Keys/UserField';
 import RoleField from "../../../Keys/RoleField";
@@ -338,9 +330,6 @@ return (
             openNew={openNew}             
             dataset={dt} 
             selectedItems={selectedUsers} 
-            items={users} 
-            item={user} 
-            setItems={setUsers} 
             setSelectedItems={setSelectedUsers}
             loading={loading}
             onDeleteItems={deleteSelectedUsers}

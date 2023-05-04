@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Toast } from 'primereact/toast';
 import { Toolbar } from 'primereact/toolbar';
 import { Button } from 'primereact/button';
-import { Dialog } from 'primereact/dialog';
 import Loading from '../../../components/admin/Loading';
 import { getSession, useSession } from "next-auth/react"; 
 import DeleteDialog from '../DeleteDialog';
+import Link from 'next/link';
 const ListLayout = (props) => {    
     const toast = useRef(null);
-    const {children,item,openNew,selectedItems,dataset,items,setItems,setSelectedItems,setItem,loading} = props;
+    const {children,openNew,selectedItems,dataset,setSelectedItems,loading} = props;
     
     const [deleteItemsDialog, setDeleteItemsDialog] = useState(false);
     const { data: session, status } = useSession();  

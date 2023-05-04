@@ -8,7 +8,7 @@ import { Password } from 'primereact/password';
 import { LayoutContext } from '../../../../components/admin/layout/context/layoutcontext';
 import { InputText } from 'primereact/inputtext';
 import { classNames } from 'primereact/utils';
-import { useTranslation } from 'next-i18next';
+import { useTranslation } from 'next-i18next'
 import { signIn } from "next-auth/react";
 
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
